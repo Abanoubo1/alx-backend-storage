@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-'''Task 9: Insert a document in Python
+'''Task 10: Change school topics
 '''
 
 
-def insert_school(mongo_collection, **kwargs):
-        '''Inserts a new document in a collection.
-            '''
-    result = mongo_collection.insert_one(kwargs)
-    return result.inserted_id
+def update_topics(mongo_collection, name, topics):
+    '''Changes all topics of a collection's document based on the name.
+    '''
+    mongo_collection.update_many(
+        {'name': name},
+        {'$set': {'topics': topics}}
+    )
